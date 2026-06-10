@@ -299,6 +299,13 @@ services:
       TFE_IPV6_ENABLED: ${tfe_ipv6_enabled}
       TFE_ADMIN_HTTPS_PORT: ${tfe_admin_https_port}
 
+%{ if length(tfe_additional_environment_variables) > 0 ~}
+      # Additional environment variables (use with care)
+%{ for env_key, env_value in tfe_additional_environment_variables ~}
+  ${env_key}: ${env_value}
+%{ endfor ~}
+%{ endif ~}
+
 %{ if tfe_hairpin_addressing ~}
     extra_hosts:
       - ${tfe_hostname}:$VM_PRIVATE_IP
@@ -507,6 +514,14 @@ spec:
       value: ${tfe_ipv6_enabled}
     - name: "TFE_ADMIN_HTTPS_PORT"
       value: ${tfe_admin_https_port}
+
+%{ if length(tfe_additional_environment_variables) > 0 ~}
+    # Additional environment variables (use with care)
+%{ for env_key, env_value in tfe_additional_environment_variables ~}
+    - name: "${env_key}"
+      value: ${env_value}
+%{ endfor ~}
+%{ endif ~}
 
     image: ${tfe_image_repository_url}/${tfe_image_name}:${tfe_image_tag}
     name: "terraform-enterprise"

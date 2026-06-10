@@ -272,6 +272,12 @@ variable "tfe_ipv6_enabled" {
   default     = false
 }
 
+variable "tfe_additional_environment_variables" {
+  type        = map(string)
+  description = "Map of additional TFE environment variables to inject into container runtime config for Docker and Podman. Intended for advanced settings not covered by individual module inputs. Use with care."
+  default     = {}
+}
+
 variable "tfe_admin_https_port" {
   type        = number
   description = "Port the TFE application container listens on for [system (admin) API endpoints](https://developer.hashicorp.com/terraform/enterprise/api-docs#system-endpoints-overview) HTTPS traffic. This value is used for both the host and container port."
