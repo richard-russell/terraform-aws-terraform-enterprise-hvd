@@ -30,11 +30,12 @@ module "tfe" {
   tfe_image_tag                      = var.tfe_image_tag
 
   # --- TFE configuration settings --- #
-  tfe_fqdn               = var.tfe_fqdn
-  tfe_operational_mode   = var.tfe_operational_mode
-  tfe_metrics_enable     = var.tfe_metrics_enable
-  tfe_metrics_http_port  = var.tfe_metrics_http_port
-  tfe_metrics_https_port = var.tfe_metrics_https_port
+  tfe_fqdn                             = var.tfe_fqdn
+  tfe_operational_mode                 = var.tfe_operational_mode
+  tfe_metrics_enable                   = var.tfe_metrics_enable
+  tfe_metrics_http_port                = var.tfe_metrics_http_port
+  tfe_metrics_https_port               = var.tfe_metrics_https_port
+  tfe_additional_environment_variables = var.tfe_additional_environment_variables
 
   # --- Networking --- #
   vpc_id                               = var.vpc_id
