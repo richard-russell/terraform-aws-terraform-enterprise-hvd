@@ -302,7 +302,7 @@ services:
 %{ if length(tfe_additional_environment_variables) > 0 ~}
       # Additional environment variables (use with care)
 %{ for env_key, env_value in tfe_additional_environment_variables ~}
-  ${env_key}: ${env_value}
+      ${env_key}: ${env_value}
 %{ endfor ~}
 %{ endif ~}
 
