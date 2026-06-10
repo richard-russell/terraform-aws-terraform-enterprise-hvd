@@ -14,6 +14,7 @@ permissions:
 
 jobs:
   sync:
+    if: github.repository_owner == 'hashicorp'
     uses: hashicorp/hvd-module-gha/.github/workflows/jira-sync.yml@main
 
     secrets:
